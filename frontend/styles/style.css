@@ -1,0 +1,20 @@
+* {
+  box-sizing: border-box;
+}
+
+/* UNIVERSAL */
+
+.home-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: lightblue;
+}
+
+
+/* NAVBAR */
+
+.nav-item a {
+  text-transform: uppercase;
+}
