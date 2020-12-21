@@ -12,12 +12,12 @@ router.route('/resorts')
 // router.route('/resorts-proxy/:name')
 //   .get(resortsController.singleProxyResort)
 
-router.route('/resorts/:name')
-  .get(resortsController.singleResort)
+// router.route('/resorts/:name')
+//   .get(resortsController.singleResort)
 //   .delete(secureRoute, resortsController.removeResort)
-  .put(secureRoute, resortsController.editResort)
+  // .put(secureRoute, resortsController.editResort)
 
-router.route('/joinus')
+router.route('/signup')
   .post(userController.createUser)
 
 router.route('/login')
@@ -31,17 +31,14 @@ router.route('/users/:accountId')
   .delete(secureRoute, userController.removeUser)
   .put(secureRoute, userController.modifyUser)
 
-router.route('/resorts/:resortId/comments')
-router.route('/resorts/:name/comments')
-  .post(secureRoute, resortsController.createComment)
 
-router.route('/resorts/:name/favourite')
+router.route('/users/:name/favourite')
   .post(secureRoute, userController.addToFavourites)
-router.route('/resorts/:name/favourite/:favouritename')
-  .put(secureRoute, userController.deleteFromFavourites)
 
-router.route('/resorts/:name/comments/:commentId')
-  .put(secureRoute, resortsController.editComment)
-  .delete(secureRoute, resortsController.deleteComment)
+  
+// router.route('/resorts/:name/favourite/:favouritename')
+//   .put(secureRoute, userController.deleteFromFavourites)
+
+
 
 module.exports = router

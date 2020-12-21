@@ -1,5 +1,5 @@
 const mongoose = require('mongoose')
-// hmm not working hmmmmm///
+
 
 const commentSchema = new mongoose.Schema({
 

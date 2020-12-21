@@ -1,18 +1,16 @@
 import React from 'react'
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
 
-
-// import './bootstrap/dist/css/bootstrap.min.css'
 import './styles/style.css'
 
 
-import Home from './components/Home'
+import Add from './components/Add'
+import Map from './components/Map'
 import Login from './components/Login'
 import Navbar from './components/Navbar'
 import SignUp from './components/SignUp'
-import SingleAccount from './components/SingleAccount'
+import Account from './components/Account'
 import UpdateAccount from './components/UpdateAccount'
-import UpdateAboutMe from './components/UpdateAboutMe'
 
 
 const App = () => (
@@ -20,12 +18,12 @@ const App = () => (
     <Navbar />
     <Switch>
 
-      <Route exact path="/" component={Home} />
-      <Route exact path="/joinus" component={SignUp} />
-      <Route exact path="/login" component={Login} />
-      <Route exact path="/users/:id" component={SingleAccount} />
-      <Route exact path="/users/edit/:id" component={UpdateAccount} />
-      <Route exact path="/users/aboutme/:id" component={UpdateAboutMe} />      
+      <Route exact path="/" component={Login} />
+      <Route exact path="/map" component={Map} />
+      <Route exact path="/signup" component={SignUp} />
+      <Route exact path="/add" component={Add} />
+      <Route exact path="/users/:id" component={Account} />
+      <Route exact path="/users/:id/edit" component={UpdateAccount} />     
 
     </Switch> 
   </BrowserRouter>

@@ -6,14 +6,28 @@ import Fade from 'react-reveal/Fade'
 
 const UpdateAccount = (props) => {
 
+  const id = props.match.params.id
   const token = localStorage.getItem('token')
+  const [userData, updateUserData] = useState({})
+  const [profilePic, updateProfilePic] = useState('')
+  const [active, setActive] = useState(true)
+
+
+  useEffect(() => {
+    axios.get(`/api/users/${id}`)
+      .then((resp) => {
+        const userImage = resp.data.image
+        updateUserData(resp.data)
+        updateProfilePic(userImage)
+      })
+  }, [])
 
   const [formData, updateFormData] = useState({
     username: '',
     email: '',
     password: '',
     passwordConfirmation: '',
-    image: ''
+    image: `${profilePic}`
   })
 
   const [errors, updateErrors] = useState({
@@ -26,19 +40,22 @@ const UpdateAccount = (props) => {
 
   function handleChange(event) {
 
+
     const name = event.target.name
 
     const value = event.target.value
 
     const data = {
       ...formData,
-      [name]: value
+      [name]: value,
+      image: `${profilePic}`
     }
     const newErrors = {
       ...errors,
       [name]: ''
     }
 
+    console.log(data)
     updateFormData(data)
     updateErrors(newErrors)
 
@@ -47,9 +64,9 @@ const UpdateAccount = (props) => {
   function handleUpdate(event) {
 
     event.preventDefault()
-
+    console.log(formData)
     const token = localStorage.getItem('token')
-    axios.put(`/api/users/${props.match.params.id}`, formData, {
+    axios.put(`/api/users/${id}`, formData, {
       headers: { Authorization: `Bearer ${token}` }
     })
       .then(res => {
@@ -59,138 +76,110 @@ const UpdateAccount = (props) => {
 
   }
 
-  function handleDelete() {
-    axios.delete(`/api/users/${props.match.params.id}`, {
-      headers: { Authorization: `Bearer ${token}` }
-    })
-      .then(() => {
-        localStorage.removeItem('token')
-        props.history.push('/resorts')
-      })
-    return console.log('delete function active')
+
+  function handlePic(image) {
+
+    updateProfilePic(image)
+
   }
 
-  function handleImageUpload(event) {
-    event.preventDefault()
+  console.log(profilePic)
 
-    const token = localStorage.getItem('token')
+  return <div className="container-global text-center">
 
-    window.cloudinary.createUploadWidget(
-      {
-        cloudName: 'dzt94',
-        uploadPreset: 'skiresortapp',
-        cropping: true
-      },
-      (err, result) => {
-        if (result.event !== 'success') {
-          return
-        }
-        axios.put(`/api/users/${props.match.params.id}`, { image: result.info.secure_url }, {
-          headers: { Authorization: `Bearer ${token}` }
-        })
-          .then((res) => updateFormData(res.data))
-      }
-    ).open()
-  }
 
-  console.log(formData)
+    <img className="palm" src="https://i.imgur.com/QZkNBd8.png" />
+    <img className="ship" src="https://i.imgur.com/mD12Fvo.png" />
 
-  return <div className="background-image-single-account">
+
     <Fade>
-      <div className="container container-custom">
 
-        <form onSubmit={handleUpdate}>
+      <form onSubmit={handleUpdate}>
 
-          <div className="form-group">
-            <img src={formData.image} />
-            <button
-              type="image"
-              value={formData.image}
-              onClick={handleImageUpload}
-              name="image"
-            >Upload Image
-        </button>
-          </div>
+        <div className="update-picture">
 
-          <div className="form-group">
-            <input
-              className="form-control"
-              placeholder="Username"
-              type="text"
-              onChange={handleChange}
-              value={formData.username}
-              name="username"
-            />
-            {errors.username && <p id="error" style={{ color: 'red' }}>
-              {`There was a problem with your ${errors.username.path}`}
-            </p>}
-          </div>
+          <img onClick={() => handlePic('https://i.imgur.com/uQyt00P.jpg')} className={profilePic === 'https://i.imgur.com/uQyt00P.jpg' ? 'profile-picture-update-active' : 'profile-picture-update'} src="https://i.imgur.com/uQyt00P.jpg" />
+          <img onClick={() => handlePic('https://i.imgur.com/HsqOaU6.jpg')} className={profilePic === 'https://i.imgur.com/HsqOaU6.jpg' ? 'profile-picture-update-active' : 'profile-picture-update'} src="https://i.imgur.com/HsqOaU6.jpg" />
+          <img onClick={() => handlePic('https://i.imgur.com/INLVHkv.jpg')} className={profilePic === 'https://i.imgur.com/INLVHkv.jpg' ? 'profile-picture-update-active' : 'profile-picture-update'} src="https://i.imgur.com/INLVHkv.jpg" />
 
-          <div className="form-group">
-            <input
-              className="form-control"
-              placeholder="Email"
-              type="text"
-              onChange={handleChange}
-              value={formData.email}
-              name="email"
-            />
-            {errors.email && <p id="error" style={{ color: 'red' }}>
-              {`There was a problem with your ${errors.email.path}`}
-            </p>}
-          </div>
-
-          <div className="form-group">
-            <input
-              className="form-control"
-              placeholder="Password"
-              type="Password"
-              onChange={handleChange}
-              value={formData.password}
-              name="password"
-            />
-            {errors.password && <p id="error" style={{ color: 'red' }}>
-              {`There was a problem with your ${errors.password.path}`}
-            </p>}
-          </div>
-
-          <div className="form-group">
-            <input
-              className="form-control"
-              placeholder="Confirm Password"
-              type="password"
-              onChange={handleChange}
-              value={formData.passwordConfirmation}
-              name="passwordConfirmation"
-            />
-            {errors.passwordConfirmation && <p id="error" style={{ color: 'red' }}>
-              {'Does not match password'}
-            </p>}
-          </div>
-
-          <div className="form-group">
-            <button className="btn btn-primary">Submit Changes</button>
-          </div>
-        </form>
-
-        <div className="form-group">
-          <Link to="#" className="">
-            <button
-              className="btn btn-danger"
-              onClick={handleDelete}>
-              Delete Acount {deleteIcon}
-            </button>
-          </Link>
         </div>
 
-      </div>
+
+        <div className="form-group">
+          <input
+            className="form-control"
+            placeholder={userData.username}
+            type="text"
+            onChange={handleChange}
+            value={formData.username}
+            name="username"
+            required
+          />
+          {errors.username && <p id="error" style={{ color: 'red' }}>
+            {`There was a problem with your ${errors.username.path}`}
+          </p>}
+        </div>
+
+        <div className="form-group">
+          <input
+            className="form-control"
+            placeholder={userData.email}
+            type="text"
+            onChange={handleChange}
+            value={formData.email}
+            name="email"
+            required
+          />
+          {errors.email && <p id="error" style={{ color: 'red' }}>
+            {`There was a problem with your ${errors.email.path}`}
+          </p>}
+        </div>
+
+        <div className="form-group">
+          <input
+            className="form-control"
+            placeholder="Password"
+            type="Password"
+            onChange={handleChange}
+            value={formData.password}
+            name="password"
+            required
+          />
+          {errors.password && <p id="error" style={{ color: 'red' }}>
+            {`There was a problem with your ${errors.password.path}`}
+          </p>}
+        </div>
+
+        <div className="form-group">
+          <input
+            className="form-control"
+            placeholder="Confirm Password"
+            type="password"
+            onChange={handleChange}
+            value={formData.passwordConfirmation}
+            name="passwordConfirmation"
+            required
+          />
+          {errors.passwordConfirmation && <p id="error" style={{ color: 'red' }}>
+            {'Does not match password'}
+          </p>}
+        </div>
+
+
+
+        <button className="btn btn-secondary btn-md btn-custom">Update</button>
+
+
+      </form>
+
+
+
+
+
     </Fade>
   </div>
+
 }
 
 export default UpdateAccount
 
-const deleteIcon = <svg width="1em" height="1em" viewBox="0 0 16 16" className="bi bi-trash" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-  <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z" />
-  <path fillRule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z" />
-</svg>

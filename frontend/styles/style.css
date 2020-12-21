@@ -1,20 +1,405 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700&family=Raleway:wght@400;700&display=swap');
+
+
+
 * {
   box-sizing: border-box;
+  font-family: 'Lato', sans-serif;
+  /* color: white; */
 }
+
+body {
+  background-color: rgb(0, 0, 0);
+  overflow-x: hidden;
+  overflow-y: hidden;
+  width: 100vw;
+  max-width: 100%;
+  height: 100%;
+  height: 100vh;
+}
+
+#root {
+  background-image: url(https://i.imgur.com/cXWdu01.png);
+  background-size: cover;
+}
+
+p {
+  color: white;
+  margin: 0;
+}
+
 
 /* UNIVERSAL */
 
-.home-container {
+.container-global {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background-color: lightblue;
+  width: 100vw;
+  max-width: 100%;
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+
+/* HOME */
+
+.home-info {
+  position: absolute;
+  top: 20%;
+  left: 4rem;
+  text-align: left;
+  font-weight: 100;
+}
+
+.home-info p {
+  font-size: 1.4rem;
+}
+
+.home-info p strong {
+  font-size: 1.4rem;
+}
+
+#mic {
+  font-size: 3rem;
+  color: rgb(255, 255, 255, 0.7);
+  background: none;
+  border: none;
+  transition: ease .3s;
+}
+
+#mic:hover {
+  font-size: 3rem;
+  color: #1e77eb;
+  background: none;
+  border: none;
+}
+
+#mic:focus {
+  font-size: 3rem;
+  color: red;
+  background: none;
+  border: none;
+
+}
+
+.transcript,
+.input-text {
+  font-size: 3rem;
+  text-align: left;
+  position: absolute;
+  top: 30%;
+  right: 5rem;
+  width: 25rem;
+  overflow-x: scroll;
 }
 
 
+.success,
+.duplicate-found,
+.no-country {
+  text-align: left;
+  font-size: 1rem;
+  font-weight: 100;
+  position: absolute;
+  top: 45%;
+  right: 15rem;
+
+}
+
+
+
+.or {
+  color: rgb(255, 255, 255, 0.7);
+  margin-top: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+
+.svg-inline--fa .fa-microphone .fa-w-11 .fa-3x {
+  color: red !important;
+}
+
 /* NAVBAR */
 
+.navbar {
+  background-color: transparent !important;
+}
+
 .nav-item a {
+  font-size: 1rem;
   text-transform: uppercase;
+  transition: ease .3s;
+}
+
+.nav-item a:hover {
+  font-size: 1.1rem !important;
+  text-transform: uppercase;
+}
+
+.navbar-brand {
+  position: absolute !important;
+  left: 1rem;
+}
+
+.logout-screen {
+  position: absolute;
+  top: 1rem;
+  left: 46%;
+ 
+}
+
+.logout-screen p {
+  color: rgb(255, 255, 255, 0.8);
+  text-align: center;
+  font-weight: 100;
+ 
+}
+
+/* FORMS */
+
+form {
+  width: 14vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+input {
+  border-radius: 0 !important;
+  border: none !important;
+  font-weight: 300 !important;
+}
+
+.form-control {
+  color: white !important;
+  background-color: transparent !important;
+  border-bottom: 1px solid white !important;
+  border-color: #1e77eb !important;
+}
+
+
+
+.form-control:hover {
+  border-color: white !important;
+  background-color: rgb(30, 119, 235);
+}
+
+.form-control:focus {
+  border-color: white !important;
+}
+
+.btn-secondary {
+  margin-top: 1rem;
+  border: 1px solid rgb(255, 255, 255, 0.5);
+  border-radius: 0;
+  text-transform: uppercase;
+  font-size: .8rem;
+  padding: .6rem 1.2rem;
+  color: white !important;
+  background-color: transparent;
+  transition: .5s;
+  display: block;
+  margin: 0 auto;
+}
+
+.btn-secondary:hover {
+  border: 1px solid rgba(11, 92, 197, 0);
+  background-color: rgba(11, 92, 197, 0.5);
+}
+
+.btn-secondary:focus {
+  border: 1px solid rgba(11, 92, 197, 0);
+  background-color: rgba(11, 92, 197, 0.5);
+}
+
+.signup-query {
+  color: rgb(255, 255, 255, 0.8);
+  margin-top: 2rem;
+}
+
+
+
+/* ACCOUNT */
+
+.palm {
+  opacity: 0.7 !important;
+  position: absolute;
+  right: -5rem;
+  width: 30rem;
+  bottom: 0rem;
+}
+
+.ship {
+  opacity: 0.7 !important;
+  position: absolute;
+  left: -14rem;
+  width: 40rem;
+  bottom: -1rem;
+}
+
+/* .signup-ticket {
+  opacity: 0.7!important;
+  position: absolute;
+  left: -5rem;
+  font-size: 4rem;
+  width: 30rem;
+  bottom: 5rem;
+} */
+
+.profile-picture {
+  border-radius: 50%;
+  width: 10vw;
+  height: 10vw;
+}
+
+.username {
+  color: white;
+  margin: .5rem;
+  margin-bottom: 1.5rem;
+}
+
+.delete-user {
+  background-color: rgb(255, 0, 0, 0.5);
+  margin-top: 1rem;
+}
+
+.delete-user:hover {
+  background-color: rgb(255, 0, 0, 0.8);
+}
+
+
+/* MAP */
+
+
+
+.marker {
+  color: red;
+  font-size: .8rem;
+  transition: ease .3s;
+  position: relative;
+  z-index: 999999 !important;
+}
+
+.marker-icon {
+  z-index: 1 !important;
+}
+
+.marker:hover .marker-info {
+  position: absolute;
+  z-index: 9999999;
+  display: block;
+}
+
+.mapboxgl-marker {
+  z-index: 999 !important;
+}
+
+
+.marker-info {
+  z-index: 9999999 !important;
+  position: absolute;
+  display: none;
+  border-radius: 1rem;
+  background-color: rgb(0, 0, 0, 0.8);
+  padding: .8rem;
+}
+
+.marker-capital,
+.marker-subregion,
+.marker-timezones {
+  font-weight: 100;
+}
+
+.marker-flag {
+  display: inline-block;
+  margin: .5rem;
+  width: 2rem;
+}
+
+.marker-name {
+  font-size: 1.3rem;
+}
+
+.marker-timezones {
+  margin-bottom: .8rem;
+}
+
+
+
+/* LOGIN */
+
+
+
+.login-welcome {
+  position: absolute;
+  top: 25%;
+  left: 4rem;
+  text-align: left;
+  font-weight: 100;
+}
+
+.login-welcome p {
+  font-size: 1.4rem;
+}
+
+.login-welcome p strong {
+  font-size: 1.4rem;
+}
+
+.phrases {
+  color: rgb(255, 255, 255, 0.8);
+  text-align: center;
+  font-weight: 100;
+  font-size: 1.2rem;
+  position: absolute;
+  top: 10rem;
+  right: 5rem;
+  width: 20rem;
+}
+
+/* SIGNUP */
+
+.signup-ticket {
+  opacity: 0.7 !important;
+  position: absolute;
+  left: -5rem;
+  font-size: 4rem;
+  width: 30rem;
+  bottom: 5rem;
+}
+
+
+/* UPDATE ACCOUNT */
+
+.update-picture {
+  /* position: fixed; */
+  width: 30vw;
+}
+
+.profile-picture-update {
+  border-radius: 50%;
+  width: 7vw;
+  height: 7vw;
+  margin-right: .5rem;
+  margin-left: .5rem;
+  margin-bottom: 1.5rem;
+}
+
+.profile-picture-update:hover {
+  border: 2px solid white;
+  cursor: pointer;
+}
+
+
+.profile-picture-update-active {
+  border-radius: 50%;
+  width: 7vw;
+  height: 7vw;
+  margin-right: .5rem;
+  margin-left: .5rem;
+  margin-bottom: 1.5rem;
+  border: 2px solid #1e77eb;
 }

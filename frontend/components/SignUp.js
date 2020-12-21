@@ -1,24 +1,37 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import Fade from 'react-reveal/Fade'
+import { phrases } from '../data/phrases'
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faPlaneDeparture } from '@fortawesome/free-solid-svg-icons'
 
 
 const SignUp = (props) => {
+
+  const route = <FontAwesomeIcon icon={faPlaneDeparture} size="3x" />
+
+  
+
+  const [phrase, updatePhrase] = useState('Banana is a popular pizza topping in Sweden.')
 
 
   const [formData, updateFormData] = useState({
     username: '',
     email: '',
     password: '',
-    passwordConfirmation: ''
+    passwordConfirmation: '',
+    isAdmin: false,
+    image: 'https://i.imgur.com/uQyt00P.jpg'
   })
 
   const [errors, updateErrors] = useState({
     username: '',
     email: '',
     password: '',
-    passwordConfirmation: ''
+    passwordConfirmation: '',
+    isAdmin: false,
+    image: 'https://i.imgur.com/uQyt00P.jpg'
   })
 
   function handleChange(event) {
@@ -45,7 +58,7 @@ const SignUp = (props) => {
 
     event.preventDefault()
 
-    axios.post('/api/joinus', formData)
+    axios.post('/api/signup', formData)
       .then(resp => {
         console.log(resp.data)
         if (resp.data.errors) {
@@ -57,15 +70,37 @@ const SignUp = (props) => {
 
   }
 
-  console.log(formData)
+  useEffect(() => {
+    setTimeout(() => {
 
-  return <div className="background-image-joinus">
+      let currentIndex = phrases.indexOf(phrase)
 
-    <div className="container container-custom">
+      let nextPhrases = [...phrases]
 
+      nextPhrases.splice(currentIndex, 1)
+
+      let randomPhrase = Math.floor(Math.random() * nextPhrases.length)
+
+      updatePhrase(nextPhrases[randomPhrase])
+
+    }, 7000)
+  }, [phrase])
+
+  return <div className="container-global">
+
+    <Fade left >
+      <img className="signup-ticket" src="https://i.imgur.com/ZVYVdt9.png" />
+    </Fade>
+
+
+    <Fade top appear spy={phrase}>
+      <h1 className="phrases" >{phrase}</h1>
+    </Fade>
+
+    <Fade>
       <form onSubmit={handleSubmit}>
 
-        <div className="form-group">
+        <div className="form-group text-center">
           <input
             className="form-control"
             placeholder="Username"
@@ -125,13 +160,15 @@ const SignUp = (props) => {
           </p>}
         </div>
 
-        <button className="btn btn-dark">Submit</button>
+        <button className="btn btn-secondary btn-md btn-custom">Submit</button>
 
       </form>
 
-    </div>
 
+    </Fade>
   </div>
+
+
 
 }
 

@@ -42,15 +42,6 @@ function singleUser(req, res) {
     .catch(error => res.send(error))
 }
 
-// function singleUser(req, res) {
-//   const name = req.params.username
-//   User
-//     .findOne({ username: { $regex: name, $options: 'i' } })
-//     .then(account => {
-//       res.send(account)
-//     })
-//     .catch(error => res.send(error))
-// }
 
 function removeUser(req, res) {
   const accountId = req.params
@@ -147,10 +138,13 @@ function addToFavourites(req, res) {
       const containsFavourite = user.favourites.includes(internalfavourite)
 
       if (containsFavourite) {
-        return console.log('already here')
+        console.log('already here')
+        return res.send({ message: `${internalfavourite} is already in your destinations!` })
+
 
       } else if (!containsFavourite) {
         user.favourites.push(favourite.favourite)
+        
       }
 
 

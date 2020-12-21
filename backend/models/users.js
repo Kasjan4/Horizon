@@ -2,26 +2,18 @@ const mongoose = require('mongoose')
 const bcrypt = require('bcrypt')
 const mongooseHidden = require('mongoose-hidden')
 const uniqueValidator = require('mongoose-unique-validator')
-//hmmm
+
 
 const schema = new mongoose.Schema({
   username: { type: String, required: true, unique: true },
   email: { type: String, required: true, unique: true },
   password: { type: String, required: true },
-  firstname: { type: String },
-  lastname: { type: String },
-  bio: { type: String },
-  image: { type: String },
+  image: { type: String, required: true },
   isAdmin: { type: Boolean },
-  favourites: { type: Array },
-  ski_or_board: { type: String },
-  favourite_region: { type: String },
-  hometown: { type: String },
-  experience: { type: String },
-  favourite_brand: { type: String }
+  favourites: { type: Array }
 })
 
-schema.plugin(mongooseHidden({ defaultHidden: { password: true, email: true } }))
+schema.plugin(mongooseHidden({ defaultHidden: { password: true } }))
 
 schema.plugin(uniqueValidator)
 
