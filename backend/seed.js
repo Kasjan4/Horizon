@@ -21,7 +21,7 @@ mongoose.connect(
             email: 'admin@admin.com',
             password: 'admin',
             passwordConfirmation: 'admin',
-            image: 'https://i.imgur.com/uQyt00P.jpg',
+            image: '/img/first.png',
             isAdmin: true,
             favourites: []
           }

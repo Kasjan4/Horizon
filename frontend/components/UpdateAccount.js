@@ -88,8 +88,8 @@ const UpdateAccount = (props) => {
   return <div className="container-global text-center">
 
 
-    <img className="palm" src="https://i.imgur.com/QZkNBd8.png" />
-    <img className="ship" src="https://i.imgur.com/mD12Fvo.png" />
+    <img className="palm" src="/img/palm.png" />
+    <img className="ship" src="/img/ship.png" />
 
 
     <Fade>
@@ -98,9 +98,9 @@ const UpdateAccount = (props) => {
 
         <div className="update-picture">
 
-          <img onClick={() => handlePic('https://i.imgur.com/uQyt00P.jpg')} className={profilePic === 'https://i.imgur.com/uQyt00P.jpg' ? 'profile-picture-update-active' : 'profile-picture-update'} src="https://i.imgur.com/uQyt00P.jpg" />
-          <img onClick={() => handlePic('https://i.imgur.com/HsqOaU6.jpg')} className={profilePic === 'https://i.imgur.com/HsqOaU6.jpg' ? 'profile-picture-update-active' : 'profile-picture-update'} src="https://i.imgur.com/HsqOaU6.jpg" />
-          <img onClick={() => handlePic('https://i.imgur.com/INLVHkv.jpg')} className={profilePic === 'https://i.imgur.com/INLVHkv.jpg' ? 'profile-picture-update-active' : 'profile-picture-update'} src="https://i.imgur.com/INLVHkv.jpg" />
+          <img onClick={() => handlePic('../img/first.png')} className={profilePic === '../img/first.png' ? 'profile-picture-update-active' : 'profile-picture-update'} src="/img/first.png"  />
+          <img onClick={() => handlePic('../img/second.png')} className={profilePic === '../img/second.png' ? 'profile-picture-update-active' : 'profile-picture-update'} src="/img/second.png" />
+          <img onClick={() => handlePic('../img/third.png')} className={profilePic === '../img/third.png' ? 'profile-picture-update-active' : 'profile-picture-update'} src="/img/third.png" />
 
         </div>
 

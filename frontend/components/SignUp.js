@@ -3,6 +3,7 @@ import axios from 'axios'
 import Fade from 'react-reveal/Fade'
 import { phrases } from '../data/phrases'
 
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlaneDeparture } from '@fortawesome/free-solid-svg-icons'
 
@@ -11,7 +12,7 @@ const SignUp = (props) => {
 
   const route = <FontAwesomeIcon icon={faPlaneDeparture} size="3x" />
 
-  
+
 
   const [phrase, updatePhrase] = useState('Banana is a popular pizza topping in Sweden.')
 
@@ -88,10 +89,10 @@ const SignUp = (props) => {
 
   return <div className="container-global">
 
-    <Fade left >
-      <img className="signup-ticket" src="https://i.imgur.com/ZVYVdt9.png" />
-    </Fade>
 
+    <Fade left >
+      <img className="signup-ticket" src='/img/ticket.png' />
+    </Fade>
 
     <Fade top appear spy={phrase}>
       <h1 className="phrases" >{phrase}</h1>

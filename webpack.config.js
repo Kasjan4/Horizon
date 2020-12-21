@@ -41,7 +41,7 @@ module.exports = env => {
         template: 'frontend/index.html',
         filename: 'index.html',
         inject: 'body',
-        favicon: './img/favicon.ico'
+        favicon: './frontend/img/favicon.ico'
       })
     ]
   }
