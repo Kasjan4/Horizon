@@ -4,8 +4,7 @@ import Fade from 'react-reveal/Fade'
 import { phrases } from '../data/phrases'
 
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faPlaneDeparture } from '@fortawesome/free-solid-svg-icons'
+
 
 
 const SignUp = (props) => {
@@ -88,7 +87,7 @@ const SignUp = (props) => {
 
 
     <Fade left >
-      <img className="signup-ticket" src='/img/ticket.png' />
+      <img className="signup-ticket" src='../img/ticket.png' />
     </Fade>
 
     <Fade top appear spy={phrase}>

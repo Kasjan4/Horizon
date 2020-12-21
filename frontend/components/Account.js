@@ -35,12 +35,12 @@ const Account = (props) => {
   return <div className="container-global text-center">
 
     <Fade right duration={500}>
-      <img className="palm" src="/img/palm.png" />
+      <img className="palm" src="../img/palm.png" />
     </Fade>
 
 
     <Fade left >
-      <img className="ship" src="/img/ship.png" />
+      <img className="ship" src="../img/ship.png" />
     </Fade>
 
 
