@@ -31,6 +31,8 @@ p {
 
 /* UNIVERSAL */
 
+
+
 .container-global {
   display: flex;
   flex-direction: column;
@@ -240,6 +242,22 @@ input {
   bottom: -1rem;
 }
 
+.none-ship {
+  opacity: 0;
+  position: absolute;
+  left: -14rem;
+  width: 40rem;
+  bottom: -1rem;
+}
+
+.none-palm {
+  opacity: 0;
+  position: absolute;
+  right: -5rem;
+  width: 30rem;
+  bottom: 0rem;
+}
+
 /* .signup-ticket {
   opacity: 0.7!important;
   position: absolute;
@@ -364,6 +382,15 @@ input {
 
 .signup-ticket {
   opacity: 0.7 !important;
+  position: absolute;
+  left: -5rem;
+  font-size: 4rem;
+  width: 30rem;
+  bottom: 5rem;
+}
+
+.none-signup-ticket {
+  opacity: 0 !important;
   position: absolute;
   left: -5rem;
   font-size: 4rem;

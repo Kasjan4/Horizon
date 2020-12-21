@@ -8,6 +8,8 @@ const Account = (props) => {
 
   const userId = props.match.params.id
   const token = localStorage.getItem('token')
+  const [ship, setShip] = useState(false)
+  const [palm, setPalm] = useState(false)
 
 
   // const [formData, updateFormData] = useState({})
@@ -34,13 +36,13 @@ const Account = (props) => {
 
   return <div className="container-global text-center">
 
-    <Fade right duration={500}>
-      <img className="palm" src="https://i.imgur.com/QZkNBd8.png" />
+   
+    <Fade left when={ship}>
+      <img className={ship === true ? 'ship' : 'none-ship'} src="https://i.imgur.com/mD12Fvo.png" onLoad={() => setShip(true)} />
     </Fade>
 
-
-    <Fade left >
-      <img className="ship" src="https://i.imgur.com/mD12Fvo.png" />
+    <Fade right when={palm} duration={500}>
+      <img className={palm === true ? 'palm' : 'none-palm'} src="https://i.imgur.com/QZkNBd8.png" onLoad={() => setPalm(true)} />
     </Fade>
 
 

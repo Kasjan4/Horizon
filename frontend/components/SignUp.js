@@ -12,6 +12,7 @@ const SignUp = (props) => {
   
   const [phrase, updatePhrase] = useState('Banana is a popular pizza topping in Sweden.')
 
+  const [ticket, setTicket] = useState(false)
 
   const [formData, updateFormData] = useState({
     username: '',
@@ -86,8 +87,8 @@ const SignUp = (props) => {
   return <div className="container-global">
 
 
-    <Fade left >
-      <img className="signup-ticket" src='https://i.imgur.com/ZVYVdt9.png' />
+    <Fade left when={ticket}>
+      <img className={ticket === true ? 'signup-ticket' : 'none-signup-ticket'} src='https://i.imgur.com/ZVYVdt9.png' onLoad={() => setTicket(true)} />
     </Fade>
 
     <Fade top appear spy={phrase}>
