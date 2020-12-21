@@ -10,10 +10,7 @@ import { faPlaneDeparture } from '@fortawesome/free-solid-svg-icons'
 
 const SignUp = (props) => {
 
-  const route = <FontAwesomeIcon icon={faPlaneDeparture} size="3x" />
-
-
-
+  
   const [phrase, updatePhrase] = useState('Banana is a popular pizza topping in Sweden.')
 
 

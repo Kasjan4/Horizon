@@ -98,9 +98,9 @@ const UpdateAccount = (props) => {
 
         <div className="update-picture">
 
-          <img onClick={() => handlePic('../img/first.png')} className={profilePic === '../img/first.png' ? 'profile-picture-update-active' : 'profile-picture-update'} src="/img/first.png"  />
-          <img onClick={() => handlePic('../img/second.png')} className={profilePic === '../img/second.png' ? 'profile-picture-update-active' : 'profile-picture-update'} src="/img/second.png" />
-          <img onClick={() => handlePic('../img/third.png')} className={profilePic === '../img/third.png' ? 'profile-picture-update-active' : 'profile-picture-update'} src="/img/third.png" />
+          <img onClick={() => handlePic('../img/first.png')} className={profilePic === '/img/first.png' ? 'profile-picture-update-active' : 'profile-picture-update'} src="/img/first.png"  />
+          <img onClick={() => handlePic('../img/second.png')} className={profilePic === '/img/second.png' ? 'profile-picture-update-active' : 'profile-picture-update'} src="/img/second.png" />
+          <img onClick={() => handlePic('../img/third.png')} className={profilePic === '/img/third.png' ? 'profile-picture-update-active' : 'profile-picture-update'} src="/img/third.png" />
 
         </div>
 
