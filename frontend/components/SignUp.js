@@ -87,7 +87,7 @@ const SignUp = (props) => {
 
 
     <Fade left >
-      <img className="signup-ticket" src='../img/ticket.png' />
+      <img className="signup-ticket" src='https://i.imgur.com/ZVYVdt9.png' />
     </Fade>
 
     <Fade top appear spy={phrase}>
