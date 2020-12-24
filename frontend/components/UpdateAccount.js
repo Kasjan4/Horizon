@@ -88,8 +88,8 @@ const UpdateAccount = (props) => {
   return <div className="container-global text-center">
 
 
-    <img className="palm" src="https://i.imgur.com/QZkNBd8.png" />
-    <img className="ship" src="https://i.imgur.com/mD12Fvo.png" />
+    <img className="palml" src="https://i.imgur.com/Nuw0jiT.png" />
+    <img className="palmr" src="https://i.imgur.com/cwiIvZn.png" />
 
 
     <Fade>
