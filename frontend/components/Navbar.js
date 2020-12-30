@@ -62,12 +62,28 @@ const Navbar = (props) => {
           <Link to="/map" className="nav-link">Map</Link>
         </li>}
 
+        {token && <li className="nav-item">
+          <Link to="/flights" className="nav-link">Flights</Link>
+        </li>}
+
+        {token && <li className="nav-item">
+          <Link to="/hotels" className="nav-link">Hotels</Link>
+        </li>}
+
+        {token && <li className="nav-item">
+          <Link to="/carhire" className="nav-link">Car Hire</Link>
+        </li>}
+
         {!token && <li className="nav-item">
           <Link to="/signup" className="nav-link">Sign Up</Link>
         </li>}
 
         {!token && <li className="nav-item">
           <Link to="/" className="nav-link">Login</Link>
+        </li>}
+
+        {token && <li className="nav-item">
+          <Link to={`/users/${userId}/chat`} className="nav-link">Chat</Link>
         </li>}
 
         {token && <li className="nav-item">

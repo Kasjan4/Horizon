@@ -41,24 +41,7 @@ const Map = (props) => {
       })
   }, [])
 
-  // useEffect(() => {
-  //   axios.get('https://restcountries.eu/rest/v2/all')
-  //     .then((resp) => {
-  //       const countrynames = resp.data
-
-  //       let countryarray = []
-  //       for (let i = 0; i < countrynames.length; i++) {
-
-  //         countryarray.push(countrynames[i].name)
-
-  //       }
-
-  //     })
-  // }, [])
-
-
-
-
+ 
   async function getMarkers(markersPassed) {
 
     const markerarray = []

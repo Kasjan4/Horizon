@@ -58,11 +58,12 @@ const SignUp = (props) => {
 
     axios.post('/api/signup', formData)
       .then(resp => {
-        console.log(resp.data)
+        
         if (resp.data.errors) {
+          console.log(resp.data.errors)
           updateErrors(resp.data.errors)
         } else {
-          props.history.push('/login')
+          props.history.push('/')
         }
       })
 
@@ -108,8 +109,8 @@ const SignUp = (props) => {
             name="username"
             required
           />
-          {errors.username && <p id="error" style={{ color: 'red' }}>
-            {`There was a problem with your ${errors.username.path}`}
+          {errors.username && <p id="error">
+            {'Username already taken'}
           </p>}
         </div>
 
@@ -123,8 +124,8 @@ const SignUp = (props) => {
             name="email"
             required
           />
-          {errors.email && <p id="error" style={{ color: 'red' }}>
-            {`There was a problem with your ${errors.email.path}`}
+          {errors.email && <p id="error" >
+            {'Email already registered'}
           </p>}
         </div>
 
@@ -138,8 +139,8 @@ const SignUp = (props) => {
             name="password"
             required
           />
-          {errors.password && <p id="error" style={{ color: 'red' }}>
-            {`There was a problem with your ${errors.password.path}`}
+          {errors.password && <p id="error">
+            {'Check your password'}
           </p>}
         </div>
 
@@ -153,8 +154,8 @@ const SignUp = (props) => {
             name="passwordConfirmation"
             required
           />
-          {errors.passwordConfirmation && <p id="error" style={{ color: 'red' }}>
-            {'Does not match password'}
+          {errors.passwordConfirmation && <p id="error">
+            {errors.passwordConfirmation.message}
           </p>}
         </div>
 

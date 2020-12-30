@@ -38,11 +38,11 @@ const Account = (props) => {
 
    
     <Fade left when={palmL}>
-      <img className={palmL === true ? 'palml' : 'none-palml'} src="https://i.imgur.com/Nuw0jiT.png" onLoad={() => setPalmL(true)} />
+      <img className={palmL === true ? 'palml' : 'none-palml'} src="https://i.imgur.com/kCmRn1o.png" onLoad={() => setPalmL(true)} />
     </Fade>
 
     <Fade right when={palmR} duration={500}>
-      <img className={palmR === true ? 'palmr' : 'none-palmr'} src="https://i.imgur.com/cwiIvZn.png" onLoad={() => setPalmR(true)} />
+      <img className={palmR === true ? 'palmr' : 'none-palmr'} src="https://i.imgur.com/NQ1yv7v.png" onLoad={() => setPalmR(true)} />
     </Fade>
 
 

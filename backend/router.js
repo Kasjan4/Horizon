@@ -2,23 +2,21 @@ const express = require('express')
 const router = express.Router()
 const resortsController = require('./controllers/resorts')
 const userController = require('./controllers/users')
+const chatController = require('./controllers/chat')
 const secureRoute = require('./middleware/secureRoute')
 
 router.route('/resorts')
   .get(resortsController.getResorts)
 
 
-// ! Get clarification over the purpose of this
-// router.route('/resorts-proxy/:name')
-//   .get(resortsController.singleProxyResort)
-
-// router.route('/resorts/:name')
-//   .get(resortsController.singleResort)
-//   .delete(secureRoute, resortsController.removeResort)
-  // .put(secureRoute, resortsController.editResort)
-
 router.route('/signup')
   .post(userController.createUser)
+
+router.route('/chat')
+  .get(chatController.getChat)
+
+router.route('/chat/post')
+  .post(chatController.postMessage)
 
 router.route('/login')
   .post(userController.logInUser)
@@ -35,7 +33,7 @@ router.route('/users/:accountId')
 router.route('/users/:name/favourite')
   .post(secureRoute, userController.addToFavourites)
 
-  
+
 // router.route('/resorts/:name/favourite/:favouritename')
 //   .put(secureRoute, userController.deleteFromFavourites)
 

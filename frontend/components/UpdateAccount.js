@@ -88,8 +88,8 @@ const UpdateAccount = (props) => {
   return <div className="container-global text-center">
 
 
-    <img className="palml" src="https://i.imgur.com/Nuw0jiT.png" />
-    <img className="palmr" src="https://i.imgur.com/cwiIvZn.png" />
+    <img className="palml" src="https://i.imgur.com/kCmRn1o.png" />
+    <img className="palmr" src="https://i.imgur.com/NQ1yv7v.png" />
 
 
     <Fade>
@@ -98,9 +98,17 @@ const UpdateAccount = (props) => {
 
         <div className="update-picture">
 
-          <img onClick={() => handlePic('https://i.imgur.com/uQyt00P.jpg')} className={profilePic === 'https://i.imgur.com/uQyt00P.jpg' ? 'profile-picture-update-active' : 'profile-picture-update'} src="https://i.imgur.com/uQyt00P.jpg"  />
-          <img onClick={() => handlePic('https://i.imgur.com/HsqOaU6.jpg')} className={profilePic === 'https://i.imgur.com/HsqOaU6.jpg' ? 'profile-picture-update-active' : 'profile-picture-update'} src="https://i.imgur.com/HsqOaU6.jpg" />
-          <img onClick={() => handlePic('https://i.imgur.com/INLVHkv.jpg')} className={profilePic === 'https://i.imgur.com/INLVHkv.jpg' ? 'profile-picture-update-active' : 'profile-picture-update'} src="https://i.imgur.com/INLVHkv.jpg" />
+          <Fade>
+            <img onClick={() => handlePic('https://i.imgur.com/uQyt00P.jpg')} className={profilePic === 'https://i.imgur.com/uQyt00P.jpg' ? 'profile-picture-update-active' : 'profile-picture-update'} src="https://i.imgur.com/uQyt00P.jpg" />
+          </Fade>
+
+          <Fade delay={200}>
+            <img onClick={() => handlePic('https://i.imgur.com/HsqOaU6.jpg')} className={profilePic === 'https://i.imgur.com/HsqOaU6.jpg' ? 'profile-picture-update-active' : 'profile-picture-update'} src="https://i.imgur.com/HsqOaU6.jpg" />
+          </Fade>
+
+          <Fade delay={400}>
+            <img onClick={() => handlePic('https://i.imgur.com/INLVHkv.jpg')} className={profilePic === 'https://i.imgur.com/INLVHkv.jpg' ? 'profile-picture-update-active' : 'profile-picture-update'} src="https://i.imgur.com/INLVHkv.jpg" />
+          </Fade>
 
         </div>
 

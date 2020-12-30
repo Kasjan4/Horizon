@@ -11,6 +11,7 @@ const schema = new mongoose.Schema({
   image: { type: String, required: true },
   isAdmin: { type: Boolean },
   favourites: { type: Array }
+
 })
 
 schema.plugin(mongooseHidden({ defaultHidden: { password: true } }))
@@ -26,7 +27,7 @@ schema
 
   .pre('validate', function checkPassword(next) {
     if (this.isModified('password') && this._passwordConfirmation !== this.password) {
-      this.invalidate('passwordConfirmation', 'should match')
+      this.invalidate('passwordConfirmation', 'Password does not match')
     }
     next()
   })
