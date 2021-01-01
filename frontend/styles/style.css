@@ -413,6 +413,13 @@ input {
 
 /* UPDATE ACCOUNT */
 
+.user-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 .update-picture {
   /* position: fixed; */
   width: 30vw;

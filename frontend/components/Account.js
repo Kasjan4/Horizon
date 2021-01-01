@@ -51,7 +51,7 @@ const Account = (props) => {
 
 
     <Fade>
-      <div>
+      <div className="user-info" >
 
         <img className="profile-picture" src={accountData.image} />
         <h1 className="username" >{accountData.username}</h1>
