@@ -7,6 +7,7 @@ export function getUserId() {
 
   // ! Split, decode, and parse the string
   const parsedToken = JSON.parse(atob(token.split('.')[1]))
+  console.log(parsedToken)
   return parsedToken.sub
 }
 

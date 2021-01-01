@@ -116,7 +116,7 @@ mongoose.connect(
             region: 'Europe',
             messages: [
               {
-                user: 'Admin',
+                user: 'Veronica',
                 message: 'hey europe is cool!'
               },
               {
@@ -125,8 +125,17 @@ mongoose.connect(
               },
               {
                 user: 'Kate',
-                message: 'i will be back!'
+                message: 'Paris: What a place, the history, architecture and culture is wonderful. So many sites to see, one more amazing then the next. A must see if you are going to visit the great cities of the world.'
+              },
+              {
+                user: 'Paul',
+                message: 'Very well worded, amazing city.'
+              },
+              {
+                user: 'Amanda',
+                message: 'Rome fulfils all that it promises. History, paintings, sculptures and food. The Vatican, the Colosseum,the Trevi fountain and lots more. Ideally a month would be less to savour all these things in some detail. The traffic is like all other major cities but the people are helpful. We were fortunate to have good weather except one evening when it rained. A good guide is a must, not only for the touristic angle but also for tips where to eat or grab a quick drink.'
               }
+              
             ]
           },
           {
@@ -150,16 +159,16 @@ mongoose.connect(
             region: 'North America',
             messages: [
               {
-                user: 'admin',
-                message: 'hey north america is cool!'
+                user: 'Veronica',
+                message: 'Highlights: Nightlife and restaurants in New York City , the Staten Island ferry in New York, museums in Washington D.C., New England clam chowder, fall colours in New England, Philadelphia and train travel.'
               },
               {
-                user: 'test',
-                message: 'i know right yeah!'
+                user: 'Paul',
+                message: 'Loved it in NYC!'
               },
               {
-                user: 'admin',
-                message: 'i will be back for sure!'
+                user: 'Robert',
+                message: 'Expensive, especially for single travellers. With car hire and motels, difficult to get by on less than 100 USD/day, though sharing reduces these substantially as does using a  tent. Many motels will take 3-4 in a room for the same price of 1/2 pushing costs down to very cheap on a per person basis. New York and San Francisco as expensive as they come. Of course a visit based in one city staying in a hostel will run to about 50 USD/day. It is motels and car hire (if not split) that really eat the money. It is Americas big cities that are arguably the most interesting and where accommodation costs are by far the highest. With a car, staying in a motel outside a city, costs can be very much reduced, only having a car in cities is a nightmare and it can be expensive to park. Equally having a car (if shared) is one of the more cost effective ways to cover longer distances.'
               }
             ]
           },
@@ -167,33 +176,30 @@ mongoose.connect(
             region: 'South America',
             messages: [
               {
-                user: 'admin',
-                message: 'hey south america is cool!'
+                user: 'Veronica',
+                message: 'Anyone been to Brazil?'
               },
               {
-                user: 'test',
-                message: 'i know right yeah!'
+                user: 'Amanda',
+                message: 'yeah best summer of my life.'
               },
               {
-                user: 'admin',
-                message: 'i will be back for sure!'
+                user: 'Robert',
+                message: 'During summer (December-February) many Brazilians take holidays, making travel both difficult and expensive. At the same time, in Rio and the rest of the south the humidity is nasty. Summer is also the most festive time of year, as Brazilians escape their apartments and take to the beaches and streets. School holidays begin in mid-December and go through to Carnival, usually held in late February (the weekend and days before Ash Wednesday).'
               }
+
             ]
           },
           {
             region: 'Africa',
             messages: [
               {
-                user: 'admin',
-                message: 'hey africa is cool!'
+                user: 'Kate',
+                message: 'With your own kit Mount Kenya can be climbed independently (just hire a local guide). Even with an organised trip, a climb works out much cheaper than Kilimanjaro (although still not "cheap"), but beware that unlike Kilimanjaro, this is quite a technical mountain with most casual climbers not getting right to the jagged top.'
               },
               {
-                user: 'test',
-                message: 'i know right yeah!'
-              },
-              {
-                user: 'admin',
-                message: 'i will be back for sure!'
+                user: 'Paul',
+                message: 'Egypt has under gone dramatic political changes over the last few years and scenes of Cairos main square full of demonstrators become familiar to those that could be bothered to follow the extraordinary events that took place as a popular revolution removed not one, but two regimes. These images and the notion of Africas most popular (and Muslim) city is enough to put many off, however very few travellers wont have aspirations of standing in front of the pyramids or aside the Nile and for good reason.'
               }
             ]
           },
@@ -201,16 +207,16 @@ mongoose.connect(
             region: 'Oceania',
             messages: [
               {
-                user: 'admin',
-                message: 'hey oceania is cool!'
+                user: 'Kate',
+                message: 'There is a huge variety and range of places to stay, and notably an excellent choice of hostels with good social scenes in most towns: book ahead for the best ones and for double rooms. Camping is widely available at campsites (if you can get to them with your own transport) or in some hostel gardens.'
               },
               {
-                user: 'test',
-                message: 'i know right yeah!'
+                user: 'Jesse',
+                message: 'i will be back there for sure!'
               },
               {
-                user: 'admin',
-                message: 'i will be back for sure!'
+                user: 'Robert',
+                message: 'If you want to stay longer than 3 months, you will need to complete an application form and lodge it either in person or by post with the embassy or consulate. It will cost AU$105 (or the equivalent in your country) and takes up to three weeks to process. If you think you might stay more than three months, it is best to get the longer visa before departure, because once you get to Australia extensions cost AU$160. Once issued, a visa usually allows multiple entries, so long as your passport is valid.'
               }
             ]
           },
@@ -218,16 +224,12 @@ mongoose.connect(
             region: 'Antarctica',
             messages: [
               {
-                user: 'admin',
-                message: 'hey antarctica is cool!'
+                user: 'Kate',
+                message: 'its cold here damn'
               },
               {
-                user: 'test',
-                message: 'i know right yeah!'
-              },
-              {
-                user: 'admin',
-                message: 'i will be back for sure!'
+                user: 'David',
+                message: 'A dream to go there one day!'
               }
             ]
           },
@@ -235,21 +237,15 @@ mongoose.connect(
             region: 'Other',
             messages: [
               {
-                user: 'admin',
-                message: 'hey other is cool!'
+                user: 'Paul',
+                message: 'anyone planning a roadtrip in the summer?'
               },
               {
-                user: 'test',
-                message: 'i know right yeah!'
-              },
-              {
-                user: 'admin',
-                message: 'i will be back for sure!'
+                user: 'Jesse',
+                message: 'Im travelling from Portugal to Vietnam in July!'
               }
             ]
           }
-
-
 
 
         ])

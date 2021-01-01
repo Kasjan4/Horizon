@@ -118,29 +118,22 @@ function logInUser(req, res) {
 function addToFavourites(req, res) {
 
   const favourite = req.body
-  console.log(favourite)
-
-  const name = req.currentUser._id
+  const id = req.currentUser._id
 
   User
-    .findById(name)
+    .findById(id)
 
     .then(user => {
-      console.log('555')
 
       if (!user) return res.status(404).send({ message: 'User not found' })
-
-      console.log(user)
-
 
       const internalfavourite = favourite.favourite
 
       const containsFavourite = user.favourites.includes(internalfavourite)
 
       if (containsFavourite) {
-        console.log('already here')
-        return res.send({ message: `${internalfavourite} is already in your destinations!` })
 
+        return res.send({ message: `${internalfavourite} is already in your destinations!` })
 
       } else if (!containsFavourite) {
         user.favourites.push(favourite.favourite)
@@ -148,8 +141,6 @@ function addToFavourites(req, res) {
       }
 
 
-      console.log(containsFavourite)
-      console.log(internalfavourite)
       return user.save()
     })
 
@@ -188,8 +179,6 @@ function deleteFromFavourites(req, res) {
         }
 
       }
-
-      console.log(user.favourites)
 
       const favourites = user.favourites
 

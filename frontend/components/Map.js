@@ -95,9 +95,12 @@ const Map = (props) => {
               <p className="marker-capital" ><strong>Capital:</strong> {country.data[0].capital}</p>
 
               <p className="marker-subregion" ><strong>Region:</strong> {country.data[0].subregion}</p>
+              <p className="marker-subregion" ><strong>Language:</strong> {country.data[0].languages[0].name}</p>
+              <p className="marker-subregion" ><strong>Currency:</strong> {country.data[0].currencies[0].name}</p>
+              <p className="marker-subregion" ><strong>Population:</strong> {country.data[0].population}</p>
               <p className="marker-timezones" ><strong>Timezone:</strong> {country.data[0].timezones[0]}</p>
 
-              <a href="https://www.booking.com/" target="_blank" rel="noreferrer" className="btn btn-secondary btn-md btn-custom">Booking.com</a>
+              {/* <a href="https://www.booking.com/" target="_blank" rel="noreferrer" className="btn btn-secondary btn-md btn-custom">Booking.com</a> */}
 
             </div>
 

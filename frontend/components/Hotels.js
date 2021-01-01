@@ -9,9 +9,26 @@ import { phrases } from '../data/phrases'
 
 const Flights = (props) => {
 
-  const [hotel, setHotel] = useState(false)
-  const [palm, setPalm] = useState(false)
+  const [phrase, updatePhrase] = useState('Travel to Antarctica is rare for most people, but not for meteorites. 90% of all meteorites are found there.')
 
+  const [hotel, setHotel] = useState(false)
+
+
+  useEffect(() => {
+    setTimeout(() => {
+
+      let currentIndex = phrases.indexOf(phrase)
+
+      let nextPhrases = [...phrases]
+
+      nextPhrases.splice(currentIndex, 1)
+
+      let randomPhrase = Math.floor(Math.random() * nextPhrases.length)
+
+      updatePhrase(nextPhrases[randomPhrase])
+
+    }, 7000)
+  }, [phrase])
 
   useEffect(() => {
     const script = document.createElement('script')
@@ -29,13 +46,15 @@ const Flights = (props) => {
 
   return <div className="container-global">
 
+    <Fade top appear spy={phrase}>
+      <h1 className="phrases" >{phrase}</h1>
+    </Fade>
+
     <Fade left when={hotel}>
       <img className={hotel === true ? 'hotel' : 'none-hotel'} src="https://i.imgur.com/SDs5WBl.png" onLoad={() => setHotel(true)} />
     </Fade>
 
-    <Slide up when={palm} delay={200}>
-      <img className={palm === true ? 'palm' : 'none-palm'} src="https://i.imgur.com/QZkNBd8.png" onLoad={() => setPalm(true)} />
-    </Slide>
+
 
     <Fade>
 

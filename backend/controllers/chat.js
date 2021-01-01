@@ -14,12 +14,18 @@ function getChat(req, res) {
 
 function postMessage(req, res) {
 
+  const currentUser = req.currentUser
+
   Chat
     .findOne({ region: req.body.region })
 
     .then(region => {
 
-      region.messages.push(req.body)
+      const message = req.body
+      delete message.region
+      message.user = currentUser.username
+      message.user_id = currentUser._id
+      region.messages.push(message)
 
       res.send(region)
       region.save()
@@ -27,208 +33,57 @@ function postMessage(req, res) {
     .catch(error => res.send(error))
 }
 
-function createUser(req, res) {
-  const body = req.body
+function deleteMessage(req, res) {
+  console.log('here')
 
-  User
-    .create(body)
-    .then(user => {
-
-      res.send(user)
-    })
-    .catch(error => res.send(error))
-}
-
-function singleUser(req, res) {
-  const accountId = req.params
-  const finalId = accountId.accountId
-  console.log(finalId)
-  User
-    .findById(finalId)
-    //.findById(accountId)
-    .then(account => {
-      console.log(account)
-      console.log('123')
-
-      if (!account) return res.status(404).send({ message: 'User not found' })
-      res.send(account)
-
-    })
-    .catch(error => res.send(error))
-}
+  const reqMessage = req.body.message
+  const reqRegion = req.body.region
 
 
-function removeUser(req, res) {
-  const accountId = req.params
-  const finalId = accountId.accountId
-  const currentUser = req.currentUser
+  Chat
+    .findOne({ region: reqRegion })
 
-  User
-    .findById(finalId)
-    .then(account => {
-      if (!account._id.equals(currentUser._id) && !req.currentUser.isAdmin) {
-        return res.status(401).send({ message: 'Unauthorised' })
-      }
-      account.deleteOne()
-      res.send(account)
-    })
-    .catch(error => res.send(error))
-}
+    .then(region => {
 
-function modifyUser(req, res) {
-  const accountId = req.params
-  const finalId = accountId.accountId
-  const body = req.body
+      const messagesInternal = region.messages
 
-  const currentUser = req.currentUser
+      const updatedMessages = []
 
-  User
-    .findById(finalId)
-    .then(account => {
-      if (!account) return res.send({ message: 'No user by this name' })
-      if (!account._id.equals(currentUser._id)) {
-        return res.status(401).send({ message: 'Unauthorised' })
-      }
-      account.set(body)
-      console.log(body)
-      //account.save()
-      //res.send(account)
-      return account.save()
-    })
-    .then(account => res.send(account))
-    .catch(error => res.send(error))
-}
+      for (let i = 0; i < messagesInternal.length; i++) {
 
-function logInUser(req, res) {
-  console.log(req.body)
-  User
-    .findOne({ email: req.body.email })
-    .then(user => {
+        if (messagesInternal[i].message !== reqMessage) {
+          updatedMessages.push(messagesInternal[i])
+        }
 
-      if (!user) {
-        res.send({ message: 'User not found' })
-
-        return
-      }
-
-      if (!user.validatePassword(req.body.password)) {
-        res.send({ message: 'Incorrect password' })
-
-        return
-      }
-
-      const token = jwt.sign(
-        { sub: user._id },
-        secret,
-        { expiresIn: '6h' }
-      )
-      res.status(202).send({ token })
-
-    })
-
-    .catch(error => res.send(error))
-
-}
-
-function addToFavourites(req, res) {
-
-  const favourite = req.body
-  console.log(favourite)
-
-  const name = req.currentUser._id
-
-  User
-    .findById(name)
-
-    .then(user => {
-      console.log('555')
-
-      if (!user) return res.status(404).send({ message: 'User not found' })
-
-      console.log(user)
-
-
-      const internalfavourite = favourite.favourite
-
-      const containsFavourite = user.favourites.includes(internalfavourite)
-
-      if (containsFavourite) {
-        console.log('already here')
-        return res.send({ message: `${internalfavourite} is already in your destinations!` })
-
-
-      } else if (!containsFavourite) {
-        user.favourites.push(favourite.favourite)
-
-      }
-
-
-      console.log(containsFavourite)
-      console.log(internalfavourite)
-      return user.save()
-    })
-
-    .then(user => res.send(user))
-    .catch(err => res.send(err))
-}
-
-function deleteFromFavourites(req, res) {
-
-  const favourite = req.params.favouritename
-  console.log(favourite)
-
-  const name = req.currentUser._id
-
-  User
-    .findById(name)
-
-    .then(user => {
-
-      if (!user) return res.status(404).send({ message: 'User not found' })
-
-      const newfilter = []
-
-      for (let i = 0; i < user.favourites.length; i++) {
-        const item = user.favourites
-
-        if (item[i] === favourite) {
-          console.log('same')
-
-        } else if (item[i] !== favourite) {
-          console.log('not same')
-          newfilter.push(user.favourites[i])
-
-        } else {
-          console.log('nothing')
+        else {
+          console.log('message witch needs to be deleted')
         }
 
       }
 
-      console.log(user.favourites)
+      messagesInternal.splice(0, messagesInternal.length)
 
-      const favourites = user.favourites
-
-      favourites.splice(0, favourites.length)
-
-      newfilter.forEach((favourite) => {
-        favourites.push(favourite)
+      updatedMessages.forEach((favourite) => {
+        messagesInternal.push(favourite)
       })
 
-      return user.save()
+      return region.save()
+
     })
 
-    .then(user => res.send(user))
+    .then(region => res.send(region))
     .catch(err => res.send(err))
+
 }
+
+
+
+
+
 
 module.exports = {
   getChat,
   postMessage,
-  createUser,
-  logInUser,
-  singleUser,
-  removeUser,
-  modifyUser,
-  addToFavourites,
-  deleteFromFavourites
+  deleteMessage
+
 }

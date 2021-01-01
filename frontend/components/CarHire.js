@@ -9,8 +9,24 @@ import { phrases } from '../data/phrases'
 
 const CarHire = (props) => {
 
+  const [phrase, updatePhrase] = useState('France is the most visited country in the world, with over 82 million international visitors per year. The United States (75.6 million) and Spain (75.6 million) round out the top three, respectively.')
   const [car, setCar] = useState(false)
-  const [road, setRoad] = useState(false)
+
+  useEffect(() => {
+    setTimeout(() => {
+
+      let currentIndex = phrases.indexOf(phrase)
+
+      let nextPhrases = [...phrases]
+
+      nextPhrases.splice(currentIndex, 1)
+
+      let randomPhrase = Math.floor(Math.random() * nextPhrases.length)
+
+      updatePhrase(nextPhrases[randomPhrase])
+
+    }, 7000)
+  }, [phrase])
 
   useEffect(() => {
     const script = document.createElement('script')
@@ -28,13 +44,15 @@ const CarHire = (props) => {
 
   return <div className="container-global">
 
+    <Fade top appear spy={phrase}>
+      <h1 className="phrases" >{phrase}</h1>
+    </Fade>
+
     <Fade left when={car}>
       <img className={car === true ? 'car' : 'none-car'} src="https://i.imgur.com/9AZFWti.png" onLoad={() => setCar(true)} />
     </Fade>
 
-    <Slide up when={road} duration={2000}>
-      <img className={road === true ? 'road' : 'none-road'} src="https://i.imgur.com/GeA6wMo.png" onLoad={() => setRoad(true)} />
-    </Slide>
+
 
 
 

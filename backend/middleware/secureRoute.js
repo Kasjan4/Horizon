@@ -7,24 +7,24 @@ function secureRoute(req, res, next) {
 
   if (!authToken || !authToken.startsWith('Bearer')) {
     console.log('first check')
-    return res.status(401).send({ message: 'Unauthorised' })
+    return res.status(401).send({ message: 'Unauthorised 1' })
   }
   const token = authToken.replace('Bearer ', '')
 
   jwt.verify(token, secret, (err, payload) => {
-    if (err) return res.status(401).send({ message: 'Unauthorised' })
+    if (err) return res.status(401).send({ message: 'Unauthorised 2' })
 
     const userId = payload.sub
     User
       .findById(userId)
       .then(user => {
-        if (!user) return res.status(401).send({ message: 'Unauthorised' })
+        if (!user) return res.status(401).send({ message: 'Unauthorised 3' })
 
         req.currentUser = user
 
         next()
       })
-      .catch(()=> res.status(401).send({ message: 'Unauthorised' }))
+      .catch(()=> res.status(401).send({ message: 'Unauthorised 4' }))
   })
 }
 

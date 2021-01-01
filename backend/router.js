@@ -16,7 +16,10 @@ router.route('/chat')
   .get(chatController.getChat)
 
 router.route('/chat/post')
-  .post(chatController.postMessage)
+  .post(secureRoute, chatController.postMessage)
+
+router.route('/chat/delete')
+  .put(secureRoute, chatController.deleteMessage)
 
 router.route('/login')
   .post(userController.logInUser)
