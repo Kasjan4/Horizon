@@ -159,34 +159,37 @@ const Chat = (props) => {
 
   return <div className="container-global">
 
-    <Fade>
-
-      <div className="chat-container">
-
-        <div className="regions">
-          <p className="region-title" >Regions</p>
-          <div className="regions-arrow">{arrow}</div>
-          <div className="regions-list">
-
-            <button onClick={handleRegion} name="Europe" className="btn btn-secondary btn-md btn-region">Europe {europe}</button>
-            <button onClick={handleRegion} name="Asia" className="btn btn-secondary btn-md btn-region">Asia {asia}</button>
-            <button onClick={handleRegion} name="North America" className="btn btn-secondary btn-md btn-region">North America {americas}</button>
-            <button onClick={handleRegion} name="South America" className="btn btn-secondary btn-md btn-region">South America {americas}</button>
-            <button onClick={handleRegion} name="Africa" className="btn btn-secondary btn-md btn-region">Africa {africa}</button>
-            <button onClick={handleRegion} name="Oceania" className="btn btn-secondary btn-md btn-region">Oceania {asia}</button>
-            <button onClick={handleRegion} name="Antarctica" className="btn btn-secondary btn-md btn-region">Antarctica {antarctica}</button>
-            <button onClick={handleRegion} name="Other" className="btn btn-secondary btn-md btn-region">Other {other}</button>
 
 
-          </div>
+    <div className="chat-container">
+
+      <div className="regions">
+        <p className="region-title" >Regions</p>
+        <div className="regions-arrow">{arrow}</div>
+        <div className="regions-list">
+
+          <button onClick={handleRegion} name="Europe" className="btn btn-secondary btn-md btn-region">Europe {europe}</button>
+          <button onClick={handleRegion} name="Asia" className="btn btn-secondary btn-md btn-region">Asia {asia}</button>
+          <button onClick={handleRegion} name="North America" className="btn btn-secondary btn-md btn-region">North America {americas}</button>
+          <button onClick={handleRegion} name="South America" className="btn btn-secondary btn-md btn-region">South America {americas}</button>
+          <button onClick={handleRegion} name="Africa" className="btn btn-secondary btn-md btn-region">Africa {africa}</button>
+          <button onClick={handleRegion} name="Oceania" className="btn btn-secondary btn-md btn-region">Oceania {asia}</button>
+          <button onClick={handleRegion} name="Antarctica" className="btn btn-secondary btn-md btn-region">Antarctica {antarctica}</button>
+          <button onClick={handleRegion} name="Other" className="btn btn-secondary btn-md btn-region">Other {other}</button>
+
 
         </div>
 
+      </div>
 
-        {messagesReady && <div className="messages">
 
+      {messagesReady && <div className="messages">
+
+        <Fade top appear spy={activeRegion}>
           <p className="messages-title" >Chat ({activeRegion})</p>
+        </Fade>
 
+        <Fade>
           <div className="messages-list" id="scroll-behaviour">
 
             {messages[0].messages.map((message, index) => {
@@ -208,20 +211,30 @@ const Chat = (props) => {
 
           </div>
 
-          <div className="messages-input">
+        </Fade>
 
-            <form onSubmit={handleSubmit} className="form-chat" >
+
+
+        <div className="messages-input">
+
+          <form onSubmit={handleSubmit} className="form-chat" >
+            <Fade delay={500}>
               <textarea onChange={handleChange} value={inputText} className="message-input" type="text" rows="1" cols="50"></textarea>
+            </Fade>
+            <Fade right delay={600}>
               <button className="btn btn-secondary btn-md btn-custom btn-input-message" >Send</button>
-            </form>
+            </Fade>
 
-          </div>
+          </form>
 
-        </div>}
+        </div>
 
-      </div>
 
-    </Fade>
+      </div>}
+
+    </div>
+
+
 
   </div>
 

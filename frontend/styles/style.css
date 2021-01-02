@@ -231,11 +231,30 @@ input {
 
 /* ACCOUNT */
 
+.countries-account {
+  color: rgb(255, 255, 255, 0.8);
+  text-align: center;
+  font-weight: 300;
+  font-size: 2.5rem;
+  position: absolute;
+  top: 10rem;
+  left: 6rem;
+  width: 20rem;
+}
+
+.countries-account-flag {
+  text-align: center;
+  position: absolute;
+  top: 15rem;
+  left: 6rem;
+  width: 10rem;
+}
+
 .palmr {
   opacity: 0.7 !important;
   position: absolute;
-  right: 0rem;
-  height: 100vh;
+  right: -6rem;
+  height: 70vh;
   bottom: 0rem;
 }
 
@@ -413,6 +432,8 @@ input {
 
 /* UPDATE ACCOUNT */
 
+
+
 .user-info {
   display: flex;
   flex-direction: column;
@@ -504,7 +525,6 @@ input {
   height: 100%;
   align-items: center;
   overflow-y: scroll;
-  /* background-color: cadetblue; */
 }
 
 
@@ -622,7 +642,20 @@ input {
 
 .skyscanner-widget {
   z-index: 999 !important;
+}
 
+.bpk-input, .bpk-select {
+  color: white !important;
+  background-color: transparent !important;
+  border-bottom: 1px solid white !important;
+  border-color: #1e77eb !important;
+}
+
+.PopupDatePicker__datePickerInput___dXDjX {
+  color: white !important;
+  background-color: transparent !important;
+  border-bottom: 1px solid white !important;
+  border-color: #1e77eb !important;
 }
 
 

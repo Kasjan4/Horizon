@@ -28,7 +28,7 @@ const CarHire = (props) => {
     }, 7000)
   }, [phrase])
 
-  useEffect(() => {
+  const widget = useEffect(() => {
     const script = document.createElement('script')
 
     script.src = 'https://widgets.skyscanner.net/widget-server/js/loader.js'
@@ -57,7 +57,7 @@ const CarHire = (props) => {
 
 
 
-    <Fade>
+    <Fade spy={widget}>
       <div data-skyscanner-widget="CarHireWidget" data-locale="en-GB" data-params="fontColour:#ffffff;buttonColour:#1e77eb;buttonFontColour:#fff;"></div>
     </Fade>
 
