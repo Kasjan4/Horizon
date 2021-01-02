@@ -3,6 +3,8 @@ import axios from 'axios'
 import { Link } from 'react-router-dom'
 import Fade from 'react-reveal/Fade'
 import { phrases } from '../data/phrases'
+import Flip from 'react-reveal/Flip'
+
 
 
 
@@ -140,8 +142,11 @@ const Account = (props) => {
 
   console.log(flags)
 
+  if (activeCountry) {
+    var activeCountryCap = activeCountry.charAt(0).toUpperCase() + activeCountry.slice(1)
 
-  const activeCountryCap = activeCountry.charAt(0).toUpperCase() + activeCountry.slice(1)
+
+  }
 
   return <div className="container-global text-center">
 
@@ -149,9 +154,9 @@ const Account = (props) => {
       <h1 className="countries-account" >{activeCountryCap}</h1>
     </Fade>
 
-    <Fade left appear spy={activeFlag}>
+    <Flip left appear spy={activeFlag}>
       <img className="countries-account-flag" src={activeFlag} />
-    </Fade>
+    </Flip>
 
 
     <Fade top appear spy={phrase}>
