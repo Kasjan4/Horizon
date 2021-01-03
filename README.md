@@ -1,1 +1,7 @@
-# Horizon
+# HORIZON
+
+## Overview
+
+A travel web application built with React, Express, and MongoDB. My ongoing individual project which I started upon completing my programming bootcamp.
+
+[CHECK IT OUT HERE](https://horizon-project.herokuapp.com/)
