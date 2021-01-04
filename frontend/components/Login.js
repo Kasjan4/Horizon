@@ -113,7 +113,7 @@ const Login = (props) => {
 
         </div>
 
-        {errors.message && <p id="error" style={{ color: 'red' }}>
+        {errors.message && <p id="error" >
           {errors.message}
         </p>}
 

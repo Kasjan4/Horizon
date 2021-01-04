@@ -46,10 +46,8 @@ const UpdateAccount = (props) => {
       return
 
     } else {
-      console.log('11')
-      setTimeout(() => {
 
-        console.log(countries.length)
+      setTimeout(() => {
 
         if (countries.indexOf(activeCountry) < countries.length - 1) {
 
@@ -68,7 +66,7 @@ const UpdateAccount = (props) => {
           setActiveFlag(flags[currentIndex])
         }
 
-      }, 3000)
+      }, 4000)
 
 
     }
@@ -89,7 +87,7 @@ const UpdateAccount = (props) => {
           countries.push(favourite)
         })
 
-        console.log('2222')
+
         getCountryFlag(respCountries)
 
         setActiveCountry(respCountries[0])
@@ -108,8 +106,7 @@ const UpdateAccount = (props) => {
     username: '',
     email: '',
     password: '',
-    passwordConfirmation: '',
-    image: ''
+    passwordConfirmation: ''
   })
 
   function handleChange(event) {
@@ -129,23 +126,28 @@ const UpdateAccount = (props) => {
       [name]: ''
     }
 
-    console.log(data)
     updateFormData(data)
     updateErrors(newErrors)
-
   }
 
   function handleUpdate(event) {
 
     event.preventDefault()
-    console.log(formData)
+
     const token = localStorage.getItem('token')
     axios.put(`/api/users/${id}`, formData, {
       headers: { Authorization: `Bearer ${token}` }
     })
-      .then(res => {
-        console.log(res.data)
-        props.history.push(`/users/${props.match.params.id}`)
+      .then(resp => {
+
+        if (resp.data.errors) {
+
+          updateErrors(resp.data.errors)
+
+        } else {
+          console.log(resp.data)
+          props.history.push(`/users/${props.match.params.id}`)
+        }
       })
 
   }
@@ -186,7 +188,7 @@ const UpdateAccount = (props) => {
 
 
   if (activeCountry) {
-    var activeCountryCap = activeCountry.charAt(0).toUpperCase() + activeCountry.slice(1)
+    var activeCountryCap = activeCountry.toUpperCase()
 
 
   }
@@ -240,7 +242,7 @@ const UpdateAccount = (props) => {
             name="username"
             required
           />
-          {errors.username && <p id="error" style={{ color: 'red' }}>
+          {errors.username && <p id="error" >
             {`There was a problem with your ${errors.username.path}`}
           </p>}
         </div>
@@ -255,7 +257,7 @@ const UpdateAccount = (props) => {
             name="email"
             required
           />
-          {errors.email && <p id="error" style={{ color: 'red' }}>
+          {errors.email && <p id="error" >
             {`There was a problem with your ${errors.email.path}`}
           </p>}
         </div>
@@ -263,14 +265,14 @@ const UpdateAccount = (props) => {
         <div className="form-group">
           <input
             className="form-control"
-            placeholder="Password"
+            placeholder="New Password"
             type="Password"
             onChange={handleChange}
             value={formData.password}
             name="password"
             required
           />
-          {errors.password && <p id="error" style={{ color: 'red' }}>
+          {errors.password && <p id="error" >
             {`There was a problem with your ${errors.password.path}`}
           </p>}
         </div>
@@ -278,14 +280,14 @@ const UpdateAccount = (props) => {
         <div className="form-group">
           <input
             className="form-control"
-            placeholder="Confirm Password"
+            placeholder="Confirm New Password"
             type="password"
             onChange={handleChange}
             value={formData.passwordConfirmation}
             name="passwordConfirmation"
             required
           />
-          {errors.passwordConfirmation && <p id="error" style={{ color: 'red' }}>
+          {errors.passwordConfirmation && <p id="error" >
             {'Does not match password'}
           </p>}
         </div>

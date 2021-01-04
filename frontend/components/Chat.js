@@ -186,7 +186,7 @@ const Chat = (props) => {
       {messagesReady && <div className="messages">
 
         <Fade top appear spy={activeRegion}>
-          <p className="messages-title" >Chat ({activeRegion})</p>
+          <p className="messages-title" >Chat <span className="active-region">({activeRegion})</span></p>
         </Fade>
 
         <Fade>

@@ -16,7 +16,6 @@ const Account = (props) => {
   const [activeFlag, setActiveFlag] = useState('')
   const [flags, setFlags] = useState([])
 
-
   const [flagsReady, setFlagsReady] = useState(false)
   const userId = props.match.params.id
   const token = localStorage.getItem('token')
@@ -69,7 +68,7 @@ const Account = (props) => {
           setActiveFlag(flags[currentIndex])
         }
 
-      }, 3000)
+      }, 4000)
 
 
     }
@@ -138,12 +137,10 @@ const Account = (props) => {
   }
 
 
-  console.log(activeFlag)
 
-  console.log(flags)
 
   if (activeCountry) {
-    var activeCountryCap = activeCountry.charAt(0).toUpperCase() + activeCountry.slice(1)
+    var activeCountryCap = activeCountry.toUpperCase()
 
 
   }
@@ -170,7 +167,7 @@ const Account = (props) => {
 
         <img className="profile-picture" src={accountData.image} />
         <h1 className="username" >{accountData.username}</h1>
-        <Link to={`/users/${userId}/edit`} className="btn btn-secondary btn-md btn-custom">Update Details</Link>
+        <Link to={`/users/${userId}/edit`} className="btn btn-secondary btn-md btn-update">Update Details</Link>
         <button onClick={handleDelete} className="btn btn-secondary btn-md btn-custom delete-user">Delete Account</button>
 
       </div>

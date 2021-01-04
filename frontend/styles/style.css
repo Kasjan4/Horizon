@@ -248,6 +248,7 @@ input {
   top: 15rem;
   left: 6rem;
   width: 15rem;
+  border-radius: 1rem;
 }
 
 .palmr {
@@ -306,6 +307,7 @@ input {
 .delete-user {
   background-color: rgb(255, 0, 0, 0.5);
   margin-top: 1rem;
+  width: 100%;
 }
 
 .delete-user:hover {
@@ -407,6 +409,7 @@ input {
   color: rgb(245, 60, 60);
   font-size: .8rem;
   margin-top: 1rem;
+  text-align: center;
 }
 
 /* SIGNUP */
@@ -432,6 +435,9 @@ input {
 
 /* UPDATE ACCOUNT */
 
+.btn-update {
+  width: 100%;
+}
 
 
 .user-info {
@@ -473,6 +479,10 @@ input {
 
 
 /* CHAT */
+
+.active-region {
+  font-weight: 100;
+}
 
 .trash-icon {
   color: rgb(255, 255, 255, 0.8);
@@ -565,8 +575,8 @@ input {
 .message-single-message {
   color: rgb(255, 255, 255, 0.8);
   text-align: left;
+  margin-left: 2rem;
   margin-right: 1rem;
-  /* background-color: #0078FF; */
   background-color: #0078FF;
   border-radius: 1rem;
   font-weight: 300;
