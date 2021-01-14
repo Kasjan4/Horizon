@@ -9,6 +9,12 @@ import { phrases } from '../data/phrases'
 
 const Login = (props) => {
 
+  const token = localStorage.getItem('token')
+
+  if (token) {
+    props.history.push('/add')
+  }
+
   const [phrase, updatePhrase] = useState('On the island of Yap, a state of Micronesia, rocks are used as currency.')
 
   const [formData, updateFormData] = useState({
