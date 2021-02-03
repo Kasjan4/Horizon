@@ -6,6 +6,8 @@ A travel web application built with React, Express, and MongoDB. My ongoing indi
 
 [CHECK IT OUT HERE](https://horizon-project.herokuapp.com/)
 
+![Horizon](./screenshots/home.png)
+
 **Technologies used:**
 
 - HTML5
